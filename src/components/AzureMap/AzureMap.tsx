@@ -68,11 +68,12 @@ const AzureMap = memo(
         if (cameraOptions) {
           mref.setCamera(cameraOptions)
         }
+        for (const eventType in events) {
+          mref.events.add(eventType as any, events[eventType])
+        }
+        
         setMapReady(true)
       })
-      for (const eventType in events) {
-        mref.events.add(eventType as any, events[eventType])
-      }
     })
 
     useEffect(() => {
